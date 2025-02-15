@@ -1,0 +1,755 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+    9. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  /* padding: 2rem; */
+  text-align: center;
+  display: flex;
+
+  --main-bg-color: white;
+  --secondary-bg-color: gray;
+  --text-color: black;
+  --text-color-secondary: rgba(75, 75, 75, 0.866);
+
+  --text-size: 14px;
+
+  --input-color : rgba(216, 229, 235, 0.407);
+
+
+}
+
+.constructor-part
+{
+  min-height: 100vh;
+  font-size: var(--text-size);
+}
+
+
+.constructor-part {
+  width: 50vw;
+  flex: 0 0 auto;
+
+  background-color: var(--main-bg-color);
+
+  padding: 16px 48px;
+
+    text-align: left;
+  max-height: 100vh;
+  overflow: auto;
+  scrollbar-width: none ;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.constructor-part h1{
+  font-size: 1.5rem;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+
+
+.block-header {
+   display: flex;
+  position: relative;
+  margin-left: -10px;
+}
+
+.block-header > span{
+  margin-left: 10px;
+}
+
+.block-header:focus {
+  outline: 1px solid black;
+  border-radius: 4px;
+}
+
+.input-container {
+  flex: 1;
+}
+
+.block-header input {
+  max-width: 600px;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  
+}
+
+.input-container:focus .border-bottom{
+  width: 100%;
+  bottom: 10px;
+}
+
+.block.edit > .block-header {
+  pointer-events: none;
+}
+
+.edit-header-button {
+  margin-left: 8px;
+  background-color: transparent;
+  border: none;
+  opacity: 0;
+}
+
+
+.block-header:focus .edit-header-button
+ {
+  opacity: 1;
+  transition: opacity 0.1s ease;
+}
+ 
+.block-header:hover .edit-header-button,
+.edit-header-button:focus {
+  outline: 1px dashed black;
+   opacity: 1;
+   transition: opacity 0.1s ease;
+ }
+
+.edit-header-button svg {
+  width: 25px;
+}
+
+
+
+.edit-header-button svg {
+  width: 25px;
+}
+
+/* .preview-part {
+  background-color: var(--secondary-bg-color);
+
+  flex-grow: 1;
+  width: 100%;
+} */
+
+
+
+
+
+
+
+
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding: 32px 0;
+  width: 100%;
+}
+
+.fields-personal {
+  display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 100%;
+
+    opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      transition: all 0.5s ease;
+      /* padding: 0 20px 0 20px; */
+
+      visibility: hidden
+}
+
+.fields-personal .field input{
+    min-width: 250px;
+}
+
+.fields-personal.open {
+  padding: 10px 0;
+  opacity: 1;
+  max-height: 700px;
+  padding-top: 32px;
+  transition: all 0.5s ease;
+}
+
+.fields-personal.open {
+  /* padding: 0; */
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.input-label {
+  display: flex;
+  flex: 1;
+}
+
+
+
+.field input,
+.field textarea {
+  width: 100%;
+  flex: 1;
+
+  padding: 12px;
+  min-width: 270px;
+  /* max-width: 350px; */
+  /* max-height: 60px; */
+
+  font-size: 1.1rem;
+
+  outline: none;
+  border-radius: 4px;
+  background-color: var(--input-color);
+
+  border: none;
+}
+
+.start-end-dates {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 32px;
+  min-width: 260px;
+  flex: 1 0;
+}
+
+.start-end-dates input {
+  flex: 1;
+
+  max-height: 60px;
+  min-width: 120px;
+}
+
+.field textarea {
+  min-width: 400px;
+  min-height: 200px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+}
+
+.border-bottom {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #815ac0;
+  transition: width .2s;
+}
+
+.input-container input:focus + .border-bottom,
+.input-container textarea:focus + .border-bottom {
+  width: 100%;
+}
+
+.label-name {
+  display: flex;
+  padding-bottom: 4px;
+  color: var(--text-color-secondary);
+}
+
+@media (min-width: 1200px) {
+  .constructor-part {
+    max-width: 960px;
+  }
+}
+
+.change-block-buttons {
+  padding: 32px 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 64px;
+
+  justify-self:flex-end;
+}
+
+
+
+
+
+
+.prev-next-buttons {
+  display: flex;
+  flex: 1 0;
+  justify-content: flex-end;
+  gap: 64px;
+}
+
+.prev-button,
+.next-button,
+.save-button {
+  transition: all .2s ease;
+
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 120px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+}
+
+.next-button {
+  background-color: #a06cd5;
+  color: #ffffff;
+}
+
+.prev-button {
+  background-color: white;
+  border: 3px solid #a06cd5;
+  color:#9163cb;
+}
+
+.prev-button:hover {
+  background-color: #9163cb;
+  border: 3px solid #9163cb;
+  color: #ffffff;
+}
+
+.next-button:hover {
+  background-color: #9163cb;
+}
+
+.prev-button:active {
+   border: 3px solid #815ac0;
+ }
+
+.prev-button:active,
+.next-button:active {
+  color: #ffffff;
+  background-color: #815ac0;
+}
+
+.prev-button:focus-visible,
+.next-button:focus-visible {
+  outline: none;
+    color: #ffffff;
+  border: 3px solid #a06cd5;
+  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #a06cd5;
+
+  background-color: #a06cd5;
+}
+
+.prev-button:focus-visible:hover,
+.next-button:focus-visible:hover {
+  border: 3px solid #9163cb;
+  background-color: #9163cb;
+}
+
+.prev-button:focus-visible:active,
+.next-button:focus-visible:active {
+  border: 3px solid #815ac0;
+  background-color: #815ac0;
+}
+
+
+
+
+.save-button {
+  background-color: rgb(241, 241, 241);
+}
+
+.save-button:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.save-button:active {
+  background-color: rgb(201, 201, 201);
+}
+
+
+.save-button:focus-visible{
+  outline: none ;
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px rgb(201, 201, 201);
+  background-color: rgb(241, 241, 241);
+ }
+
+.save-button:focus-visible:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.save-button:focus-visible:active {
+    background-color: rgb(201, 201, 201);
+}
+
+
+
+
+
+
+
+
+/* EDUCATION AND WORK */
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 1s 5s;
+} */
+
+input:-webkit-autofill {
+  border: none;
+  border-radius: .3rem;
+  caret-color: var(--text-color);
+  /* Pour le I quand on édite */
+  color: var(--text-color);
+  background: var(--input-color);
+  /* webkit autofill */
+  -webkit-text-fill-color: var(--text-color);
+  /* Surcharge la font color d'autofill */
+  -webkit-background-clip: text;
+  /* Supprime le background autofill, utile pour le border radius */
+  box-shadow: 0 0 0 50px var(--input-color) inset;
+  /* Ajoute un fake background à base d'ombrage aplatit */
+}
+
+.block.edit input,
+.block.edit textarea {
+  background-color: var(--input-color) !important;
+  pointer-events: none;
+  /* inset: all; */
+  filter: brightness(.9);
+}
+
+.desctription {
+  color: var(--text-color-secondary);
+  /* padding: 0 20px 0 20px; */
+}
+
+.section h2 {
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+h2 button {
+  all: inherit;
+  flex: 1;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.personal-button {
+  padding: 10px;
+}
+
+h2 button:hover,
+.personal-button:hover {
+  color: #815ac0;
+  transition: all .1s ;
+}
+
+h2 button:hover>span>p+p {
+  color: black;
+  transition: all .1s;
+}
+
+.delete-button {
+  position: absolute;
+  right: -65px;
+  opacity: 0;
+}
+
+.delete-button svg {
+  height: 25px;
+}
+
+h2:hover .delete-button {
+  opacity: 1;
+  transition: opacity 0.1s ease;  
+}
+
+.delete-button:hover {
+  fill: #744bb6
+}
+
+.vert {
+  height: 8px;
+  transition: transform 0.5s ease;
+  transform-origin: center; 
+}
+
+[aria-expanded="true"] .vert {
+  transform: scaleY(0);
+}
+
+[aria-expanded] rect {
+  fill: currentColor;
+}
+
+h2 button svg {
+  width: 30px;
+  height: auto;
+  align-self: center;
+}
+
+h2 button:focus-visible svg {
+  outline: 2px solid;
+}
+
+h2 button>span>p:first-of-type {
+  font-size: 1rem;
+}
+
+h2 button > span > p + p {
+  font-size: 0.8rem;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  /* max-width: 660px; */
+  /* align-self: center; */
+  margin: 10px 0px;
+  border: 1px solid rgba(162, 162, 162, 0.484);
+  border-radius: 8px;
+}
+
+.section.add h2 {
+  min-height: 0px;
+}
+
+.block h3 {
+  margin-top: 10px;
+}
+
+.section.add .fields.open{
+  padding: 0 20px 20px 20px;
+}
+
+.section.personal {
+  border-radius: 8px; 
+  border: none !important;
+  margin: 0;
+}
+
+.personal-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  /* padding: 20px; */
+  /* margin: 0; */
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  /* outline: none; */
+}
+
+
+.personal-button svg{
+  width: 25px;
+}
+
+.fields {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.5s ease;
+    padding: 0 20px 0 20px;
+    visibility: hidden
+}
+
+.open {
+  padding: 0 20px 20px 20px;
+  opacity: 1;
+  max-height: 700px;
+  padding-top: 32px;
+  transition: all 0.5s ease;
+      visibility:visible;
+}
+
+
+
+.saving-message {
+  padding-left: 10px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.684);
+}
+
+.add-section-button {
+  display: flex;
+  flex: 0 1;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  color: #a06cd5;
+  transition: all .1s;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.add-section-button:hover {
+  background-color: #a06cd518;
+  color: #9163cb;
+}
+
+
+
+
+
+
+input[type="month"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="month"] {
+  /* display: none; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+
+#education-description, 
+#personal-description,
+#work-description {
+  display: flex;
+  flex: 1 1;
+  min-width: 500px;
+  /* max-width: 800px  ; */
+  min-height: 200px;
+}
+
+textarea {
+  border: none;
+  padding: 10px;
+  font-size: inherit;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+}
+
+
+
+
+
+
+.field.photo {
+  /* height: 150px; */
+  max-width: 50px !important;
+  /* pointer-events: none; */
+  filter: brightness(.9);
+}
+
+.input-container.photo{
+  height: 50px;
+  max-width: 30px !important  ;
+}
+
+.input-container.photo input {
+  height: 50px;
+  max-width: 50px !important;
+  min-width: 50px !important;
+} 
+
+
+
+@media (max-width: 1200px) {
+  /* .preview-part {
+    display: none;
+  } */
+
+  .constructor-part {
+    width: 100%;
+  }
+}
+
+
+
+
+.alertMessage {
+  font-size: 16px;
+  /* font-weight: 600; */
+  padding: 8px;
+  color: rgb(255, 108, 108);
+}
+

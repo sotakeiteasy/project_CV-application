@@ -1,0 +1,167 @@
+#root {
+    width: 100%;
+    margin: 0;
+    /* padding: 2rem; */
+    text-align: center;
+    display: flex;
+
+    --main-bg-color: white;
+    --secondary-bg-color: gray;
+    --text-color: black;
+    --text-color-secondary: rgba(75, 75, 75, 0.866);
+
+    --text-size: 14px;
+}
+
+/* PREVIEW */
+.previewPart {
+    background-color: var(--secondary-bg-color);
+    min-height: 100vh;
+    flex-grow: 1;
+    width: 100%;
+}
+
+
+.photo {
+    height: 20px;
+    width: 10px;
+}
+
+.resumePreview {
+    background-color: var(--main-bg-color);
+    justify-self: center;
+    height: 90vh;
+    aspect-ratio: 0.707;
+
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+
+    margin: 3rem;
+    padding: 2vh;
+    font-size: 1.2vh;
+}
+
+.resumePreview h1 {
+    font-size: 2vh;
+}
+
+.resumePreview h2 {
+    font-size: 1.4vh;
+}
+
+.resumePreview h3 {
+    font-size: 1.2vh;
+}
+
+
+.main {
+    display: flex;
+    width: 100%;
+}
+
+.leftSide{
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    padding: 1vh;
+    text-align: left;
+    gap: 2vh;
+}
+
+.leftSide > div{
+    display: flex;
+    flex-direction: column;
+    font-size: .9vh;
+    overflow-wrap: break-word;
+    /* white-space: normal; */
+    gap: .5vh;
+}
+
+.skills {
+    text-align: left;
+    overflow-wrap: break-word;
+    /* padding: 2vh; */
+}
+
+
+.previewEducation,
+.previewAdditional,
+.previewWork {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    padding: 1vh 2vh;
+}
+
+.previewEducation,
+.previewAdditional,
+.previewWork {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    padding: 1vh 2vh;
+}
+
+
+/* PERSONAL */
+.previewPersonal {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    background-color: aliceblue;
+    margin: 1vh;
+    padding: 1vh;
+    height: 15vh;
+}
+
+.previewPersonal h2 {
+    padding-bottom: 4vh;
+}
+
+
+
+/* EDUCATION */
+
+
+
+
+
+/* WORK */
+
+.workExperience,
+.educationExperience {
+    display: flex;
+    flex-direction: column;
+    padding: .5vh 0;
+    gap: .3vh;
+}
+
+
+
+@media (max-width: 1200px) {
+    .previewPart {
+        display: none;
+    }
+}
+
+
+
+.button {
+    background: white;
+    border: none;
+    padding: 5px;
+    margin-left: 30px;
+    transition: all .1s ease;
+    border-radius: 2px;
+}
+
+.button:hover {
+    background: rgb(240, 240, 240);
+}
+
+.button:active {
+    background: rgba(240, 240, 240, 0.785);
+}
