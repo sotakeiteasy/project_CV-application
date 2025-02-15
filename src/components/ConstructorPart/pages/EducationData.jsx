@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Field from "../pagesComponents/Field";
 import EditableHeader from "../pagesComponents/EditableHeader";
-import SectionHeader from "../pagesComponents/sectionHeader";
+import SectionHeader from "../pagesComponents/SectionHeader";
 
 /* eslint-disable react/prop-types */
 
